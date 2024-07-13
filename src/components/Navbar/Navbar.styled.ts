@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 export const NavbarContainer = styled.nav`
-  height: 3rem;
-  padding: 0 1rem;
+  padding: 1rem 1.5rem;
   border-bottom: 1px solid #ccc;
 
   display: flex;
