@@ -7,12 +7,19 @@ import {
   DropdownItem,
 } from './Dropdown.styled'
 
+export interface DropdownItemType {
+  label: string
+  icon: ReactNode
+  onClick: () => void
+}
+
 export interface DropdownProps {
   children: ReactNode
+  items: DropdownItemType[]
 }
 
 export default function Dropdown(props: DropdownProps) {
-  const { children } = props
+  const { children, items } = props
   const [isOpen, setIsOpen] = useState(true)
   const ref = useRef<HTMLUListElement>(null)
 
@@ -36,8 +43,12 @@ export default function Dropdown(props: DropdownProps) {
 
       {isOpen && (
         <DropdownContent ref={ref}>
-          <DropdownItem>Profile</DropdownItem>
-          <DropdownItem>Logout</DropdownItem>
+          {items?.map(item => (
+            <DropdownItem key={item.label} onClick={item.onClick}>
+              {item.icon}
+              {item.label}
+            </DropdownItem>
+          ))}
         </DropdownContent>
       )}
     </DropdownContainer>

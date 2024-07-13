@@ -1,5 +1,7 @@
 import Avatar from '@components/Avatar'
+import Dropdown from '@components/Dropdown/Dropdown'
 import { NavbarActions, NavbarContainer, NavbarTitle } from './Navbar.styled'
+import { navbarUserDropdownItems } from './Navbar.utils'
 
 export default function Navbar() {
   return (
@@ -7,7 +9,9 @@ export default function Navbar() {
       <NavbarTitle>Dashboard</NavbarTitle>
 
       <NavbarActions>
-        <Avatar src="/images/avatar.png" />
+        <Dropdown items={navbarUserDropdownItems}>
+          <Avatar src="/images/avatar.png" />
+        </Dropdown>
       </NavbarActions>
     </NavbarContainer>
   )

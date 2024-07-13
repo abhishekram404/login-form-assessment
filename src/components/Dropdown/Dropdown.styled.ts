@@ -39,6 +39,9 @@ export const DropdownContent = styled.ul`
 export const DropdownItem = styled.li`
   padding: 1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 
   &:hover {
     background-color: #f9f9f9;
