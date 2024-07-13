@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import {
+  ErrorContainer,
   InputContainer,
   InputField,
   InputFieldContainer,
@@ -13,10 +14,19 @@ export interface InputProps
   labelRightSection?: ReactNode
   leftIcon?: ReactNode
   rightIcon?: ReactNode
+  errorMessage?: string
 }
 
 export default function Input(props: InputProps) {
-  const { label, labelRightSection, leftIcon, rightIcon, ...rest } = props
+  const {
+    label,
+    labelRightSection,
+    leftIcon,
+    rightIcon,
+    errorMessage,
+    ...rest
+  } = props
+
   return (
     <InputContainer>
       <LabelContainer>
@@ -28,6 +38,7 @@ export default function Input(props: InputProps) {
         <InputField type="email" {...rest} />
         {rightIcon}
       </InputFieldContainer>
+      {errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}
     </InputContainer>
   )
 }

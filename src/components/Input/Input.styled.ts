@@ -48,3 +48,8 @@ export const LabelContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 `
+
+export const ErrorContainer = styled.div`
+  font-size: 0.8rem;
+  color: #ff0000;
+`
