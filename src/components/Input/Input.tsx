@@ -1,16 +1,25 @@
-import React from 'react'
-import { InputContainer, InputField, InputLabel } from './Input.styled'
+import React, { ReactNode } from 'react'
+import {
+  InputContainer,
+  InputField,
+  InputLabel,
+  LabelContainer,
+} from './Input.styled'
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
+  labelRightSection?: ReactNode
 }
 
 export default function Input(props: InputProps) {
-  const { label, ...rest } = props
+  const { label, labelRightSection, ...rest } = props
   return (
     <InputContainer>
-      <InputLabel>{label}</InputLabel>
+      <LabelContainer>
+        <InputLabel>{label}</InputLabel>
+        {labelRightSection}
+      </LabelContainer>
       <InputField type="email" {...rest} />
     </InputContainer>
   )

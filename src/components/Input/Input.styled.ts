@@ -22,3 +22,9 @@ export const InputField = styled.input`
     border-color: #000;
   }
 `
+
+export const LabelContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
