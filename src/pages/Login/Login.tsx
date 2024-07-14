@@ -11,7 +11,7 @@ import {
 } from './Login.styled'
 
 export default function Login() {
-  const { creds, errors, handleChange, handleSubmit } = useLogin()
+  const { creds, errors, isPending, handleChange, handleSubmit } = useLogin()
 
   return (
     <LoginContainer>
@@ -27,6 +27,7 @@ export default function Login() {
           value={creds.email}
           onChange={handleChange('email')}
           errorMessage={errors.email}
+          disabled={isPending}
         />
         <PasswordInput
           label="Password"
@@ -34,8 +35,11 @@ export default function Login() {
           value={creds.password}
           onChange={handleChange('password')}
           errorMessage={errors.password}
+          disabled={isPending}
         />
-        <Button type="submit">Login</Button>
+        <Button type="submit" disabled={isPending}>
+          {isPending ? 'Loading...' : 'Login'}
+        </Button>
       </LoginFormContainer>
     </LoginContainer>
   )

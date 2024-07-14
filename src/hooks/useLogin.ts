@@ -19,7 +19,7 @@ export default function useLogin() {
     password: '',
   })
 
-  const login = useMutation({
+  const { mutateAsync, isPending } = useMutation({
     mutationFn: loginApi,
   })
 
@@ -50,7 +50,7 @@ export default function useLogin() {
     }
 
     try {
-      const res = await login.mutateAsync(creds)
+      const res = await mutateAsync(creds)
       console.log(res)
     } catch (error) {
       console.error(error)
@@ -59,6 +59,7 @@ export default function useLogin() {
   return {
     creds,
     errors,
+    isPending,
     handleChange,
     handleSubmit,
   }
