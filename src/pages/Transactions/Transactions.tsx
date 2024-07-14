@@ -4,6 +4,7 @@ import fetchTransactions from '@services/fetchTransactions.api'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { TransactionsStyled } from './Transactions.styled'
+import { transactionColumns } from './Transactions.utils'
 
 const TRANSACTIONS_PER_PAGE = 20
 
@@ -22,13 +23,7 @@ export default function Transactions() {
   return (
     <TransactionsStyled>
       <Table
-        columns={[
-          { name: 'SN', accessor: 'id' },
-          { name: 'Sender', accessor: 'sender' },
-          { name: 'Receiver', accessor: 'receiver' },
-          { name: 'amount', accessor: 'amount' },
-          { name: 'createdAt', accessor: 'createdAt' },
-        ]}
+        columns={transactionColumns}
         items={transactionsQuery.data?.data}
         pagination
         page={page}
