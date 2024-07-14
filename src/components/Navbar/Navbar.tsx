@@ -1,7 +1,13 @@
 import Avatar from '@components/Avatar'
 import Dropdown from '@components/Dropdown/Dropdown'
 import useAuth from '@hooks/useAuth'
-import { NavbarActions, NavbarContainer, NavbarTitle } from './Navbar.styled'
+import {
+  NavbarActions,
+  NavbarContainer,
+  NavbarTitle,
+  NavbarUserName,
+  NavbarUserProfile,
+} from './Navbar.styled'
 import { getNavbarUserDropdownItems } from './Navbar.utils'
 
 export default function Navbar() {
@@ -16,7 +22,10 @@ export default function Navbar() {
 
       <NavbarActions>
         <Dropdown items={options} position={{ top: '110%', right: '0px' }}>
-          <Avatar src="/images/avatar.png" />
+          <NavbarUserProfile>
+            <Avatar src="/images/avatar.png" />
+            <NavbarUserName>John Doe</NavbarUserName>
+          </NavbarUserProfile>
         </Dropdown>
       </NavbarActions>
     </NavbarContainer>

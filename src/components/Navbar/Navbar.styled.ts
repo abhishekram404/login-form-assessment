@@ -18,3 +18,14 @@ export const NavbarActions = styled.div`
   display: flex;
   gap: 1rem;
 `
+
+export const NavbarUserProfile = styled.div`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+`
+
+export const NavbarUserName = styled.span`
+  font-weight: 500;
+  color: #333;
+`
