@@ -24,6 +24,7 @@ export default function Input(props: InputProps) {
     leftIcon,
     rightIcon,
     errorMessage,
+    disabled,
     ...rest
   } = props
 
@@ -33,9 +34,9 @@ export default function Input(props: InputProps) {
         <InputLabel>{label}</InputLabel>
         {labelRightSection}
       </LabelContainer>
-      <InputFieldContainer>
+      <InputFieldContainer $disabled={disabled}>
         {leftIcon}
-        <InputField type="email" {...rest} />
+        <InputField type="email" disabled={disabled} {...rest} />
         {rightIcon}
       </InputFieldContainer>
       {errorMessage && <ErrorContainer>{errorMessage}</ErrorContainer>}

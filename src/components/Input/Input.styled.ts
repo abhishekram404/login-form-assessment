@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const InputContainer = styled.div`
   display: flex;
@@ -11,12 +11,13 @@ export const InputLabel = styled.label`
   color: #2e2e2e;
 `
 
-export const InputFieldContainer = styled.div`
+export const InputFieldContainer = styled.div<{ $disabled?: boolean }>`
   display: flex;
   align-items: center;
   border: 1px solid #ccc;
   border-radius: 4px;
   transition: border-color 0.2s;
+
   &:focus-within {
     border-color: #000;
   }
@@ -24,6 +25,14 @@ export const InputFieldContainer = styled.div`
   input {
     flex: 1;
   }
+
+  ${props =>
+    props.$disabled &&
+    css`
+      background-color: #f0f0f0;
+      color: #a0a0a0;
+      cursor: not-allowed;
+    `}
 `
 
 export const InputField = styled.input`
