@@ -9,10 +9,13 @@ export const DropdownTarget = styled.button`
   cursor: pointer;
 `
 
-export const DropdownContent = styled.ul`
+export const DropdownContent = styled.ul<{
+  $top?: string
+  $left?: string
+  $right?: string
+  $bottom?: string
+}>`
   position: absolute;
-  top: 100%;
-  right: 0;
   border: 1px solid #ccc;
   background-color: #fff;
   display: flex;
@@ -20,9 +23,13 @@ export const DropdownContent = styled.ul`
   list-style-type: none;
   min-width: 160px;
   border-radius: 4px;
+  overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
   animation: fadeIn 0.2s ease-in-out;
+  top: ${({ $top }) => $top};
+  left: ${({ $left }) => $left};
+  right: ${({ $right }) => $right};
+  bottom: ${({ $bottom }) => $bottom};
 
   @keyframes fadeIn {
     from {

@@ -13,14 +13,23 @@ export interface DropdownItemType {
   onClick: () => void
 }
 
+type Position = {
+  top?: string
+  left?: string
+  right?: string
+  bottom?: string
+}
+
 export interface DropdownProps {
   children: ReactNode
   items: DropdownItemType[]
+  position?: Position
 }
 
 export default function Dropdown(props: DropdownProps) {
-  const { children, items } = props
-  const [isOpen, setIsOpen] = useState(true)
+  const { children, items, position } = props
+  const { top, right, bottom, left } = position || {}
+  const [isOpen, setIsOpen] = useState(false)
   const ref = useRef<HTMLUListElement>(null)
 
   const handleToggle = () => {
@@ -42,7 +51,13 @@ export default function Dropdown(props: DropdownProps) {
       </Button>
 
       {isOpen && (
-        <DropdownContent ref={ref}>
+        <DropdownContent
+          ref={ref}
+          $top={top}
+          $right={right}
+          $bottom={bottom}
+          $left={left}
+        >
           {items?.map(item => (
             <DropdownItem key={item.label} onClick={item.onClick}>
               {item.icon}

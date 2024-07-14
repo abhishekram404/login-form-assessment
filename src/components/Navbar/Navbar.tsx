@@ -9,7 +9,10 @@ export default function Navbar() {
       <NavbarTitle>Dashboard</NavbarTitle>
 
       <NavbarActions>
-        <Dropdown items={navbarUserDropdownItems}>
+        <Dropdown
+          items={navbarUserDropdownItems}
+          position={{ top: '110%', right: '0px' }}
+        >
           <Avatar src="/images/avatar.png" />
         </Dropdown>
       </NavbarActions>
