@@ -17,6 +17,12 @@ export const ButtonStyled = styled(BaseButton)`
   &:hover {
     background-color: #0056b3;
   }
+
+  &:disabled {
+    background-color: #b3d7ff;
+    color: #f0f0f0;
+    cursor: not-allowed;
+  }
 `
 
 export const UnstyledButtonElement = styled(BaseButton)`
