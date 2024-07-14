@@ -8,7 +8,7 @@ export const LoginContainer = styled.div`
   background-color: #f8f8f8;
 `
 
-export const LoginFormContainer = styled.div`
+export const LoginFormContainer = styled.form`
   min-width: 360px;
   display: flex;
   flex-direction: column;
