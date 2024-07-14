@@ -10,7 +10,7 @@ import {
 export interface DropdownItemType {
   label: string
   icon: ReactNode
-  onClick: () => void
+  onClick?: () => void
 }
 
 type Position = {
