@@ -12,7 +12,7 @@ export const PasswordEyeButton = (props: PasswordEyeButtonProps) => {
 
   return (
     <RightIconContainer>
-      <Button onClick={handleTogglePasswordVisibility} unstyled>
+      <Button onClick={handleTogglePasswordVisibility} unstyled type="button">
         <Icon icon={isPasswordVisible ? 'lucide:eye-off' : 'lucide:eye'} />
       </Button>
     </RightIconContainer>

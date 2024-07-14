@@ -38,6 +38,12 @@ export const InputField = styled.input`
     border-color: #000;
   }
 
+  &:disabled {
+    background-color: #f0f0f0;
+    color: #a0a0a0;
+    cursor: not-allowed;
+  }
+
   &::placeholder {
     color: #aaaaaa;
   }
