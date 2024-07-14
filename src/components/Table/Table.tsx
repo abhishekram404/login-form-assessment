@@ -1,7 +1,9 @@
 import AnyObject from '@customTypes/AnyObject.type'
+import Pagination from './components/Pagination'
 import Row from './components/Row'
 import {
   TableBodyStyled,
+  TableContainer,
   TableHeadItemStyled,
   TableHeadStyled,
   TableRowStyled,
@@ -21,27 +23,48 @@ export type TableColumn = {
 export type TableProps = {
   columns: TableColumn[]
   items: TableItem[]
+  pagination?: boolean
+  page?: number
+  setPage?: (page: number) => void
 }
 
 export default function Table(props: TableProps) {
-  const { columns, items } = props
-  return (
-    <TableStyled>
-      <TableHeadStyled>
-        <TableRowStyled>
-          {columns.map(column => (
-            <TableHeadItemStyled key={column.accessor}>
-              <b>{column.name}</b>
-            </TableHeadItemStyled>
-          ))}
-        </TableRowStyled>
-      </TableHeadStyled>
+  const { columns, items, pagination, page = 1, setPage } = props
 
-      <TableBodyStyled>
-        {items.map(item => (
-          <Row key={item.id} item={item} columns={columns} />
-        ))}
-      </TableBodyStyled>
-    </TableStyled>
+  const handleNext = () => {
+    setPage?.(page + 1)
+  }
+
+  const handlePrevious = () => {
+    setPage?.(page - 1)
+  }
+
+  return (
+    <TableContainer>
+      <TableStyled>
+        <TableHeadStyled>
+          <TableRowStyled>
+            {columns.map(column => (
+              <TableHeadItemStyled key={column.accessor}>
+                <b>{column.name}</b>
+              </TableHeadItemStyled>
+            ))}
+          </TableRowStyled>
+        </TableHeadStyled>
+
+        <TableBodyStyled>
+          {items.map(item => (
+            <Row key={item.id} item={item} columns={columns} />
+          ))}
+        </TableBodyStyled>
+      </TableStyled>
+      {pagination && (
+        <Pagination
+          page={page}
+          handlePrevious={handlePrevious}
+          handleNext={handleNext}
+        />
+      )}
+    </TableContainer>
   )
 }

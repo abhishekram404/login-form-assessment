@@ -1,13 +1,20 @@
 import styled from 'styled-components'
 
+export const TableContainer = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`
+
 export const TableStyled = styled.table`
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   border-radius: 6px;
   position: relative;
+  flex: 1;
   height: 100%;
-  border-radius: 6px;
+  overflow: hidden;
 `
 
 export const TableHeadStyled = styled.thead`
@@ -42,7 +49,7 @@ export const TableHeadItemRight = styled.span`
 `
 
 export const TableBodyStyled = styled.tbody`
-  height: calc(100% - 90px);
+  height: 100%;
   overflow-y: auto;
 `
 
@@ -70,5 +77,27 @@ export const TableCellStyled = styled.td`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+`
+
+export const PaginationStyled = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  position: sticky;
+  bottom: 0;
+`
+
+export const PaginationButton = styled.button`
+  background: #dce2f0;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #c0c9e1;
   }
 `
