@@ -1,7 +1,9 @@
 import Button from '@components/Button'
 import Input from '@components/Input'
 import PasswordInput from '@components/PasswordInput/PasswordInput'
+import useAuth from '@hooks/useAuth'
 import useLogin from '@hooks/useLogin'
+import { Navigate } from 'react-router-dom'
 import {
   FormHeader,
   FormSubtitle,
@@ -12,6 +14,12 @@ import {
 
 export default function Login() {
   const { creds, errors, isPending, handleChange, handleSubmit } = useLogin()
+
+  const { isAuthenticated } = useAuth()
+
+  if (isAuthenticated) {
+    return <Navigate to="/" />
+  }
 
   return (
     <LoginContainer>

@@ -1,4 +1,5 @@
 import Layout from '@components/Layout/Layout'
+import ProtectedRoute from '@components/ProtectedRoute/ProtectedRoute'
 import Dashboard from '@pages/Dashboard'
 import Login from '@pages/Login'
 import { RouteObject } from 'react-router-dom'
@@ -10,8 +11,14 @@ export const routes: RouteObject[] = [
     children: [
       {
         path: '/',
-        element: <Layout />,
-        children: [{ path: '/', element: <Dashboard /> }],
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: '/',
+            element: <Layout />,
+            children: [{ path: '/', element: <Dashboard /> }],
+          },
+        ],
       },
       {
         path: '/login',

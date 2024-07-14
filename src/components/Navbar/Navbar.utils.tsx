@@ -1,6 +1,10 @@
 import { Icon } from '@iconify/react/dist/iconify.js'
 
-export const navbarUserDropdownItems = [
+export const getNavbarUserDropdownItems = ({
+  onLogoutClick,
+}: {
+  onLogoutClick?: VoidFunction
+}) => [
   {
     label: 'Profile',
     icon: <Icon icon="lucide:user-round" />,
@@ -10,6 +14,6 @@ export const navbarUserDropdownItems = [
   {
     label: 'Logout',
     icon: <Icon icon="material-symbols:logout" />,
-    onClick: () => alert('Logout clicked'),
+    onClick: onLogoutClick,
   },
 ]

@@ -2,6 +2,7 @@ import { validateCreds } from '@pages/Login/Login.utils'
 import loginApi from '@services/login.api'
 import { useMutation } from '@tanstack/react-query'
 import { ChangeEvent, FormEvent, useState } from 'react'
+import useAuth from './useAuth'
 
 export type Creds = {
   email: string
@@ -9,6 +10,7 @@ export type Creds = {
 }
 
 export default function useLogin() {
+  const { loginSuccess } = useAuth()
   const [creds, setCreds] = useState<Creds>({
     email: '',
     password: '',
@@ -21,6 +23,9 @@ export default function useLogin() {
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: loginApi,
+    onSuccess(data) {
+      loginSuccess?.(data.data.accessToken)
+    },
   })
 
   const clearError = (type: keyof typeof errors) => {
@@ -50,8 +55,7 @@ export default function useLogin() {
     }
 
     try {
-      const res = await mutateAsync(creds)
-      console.log(res)
+      await mutateAsync(creds)
     } catch (error) {
       console.error(error)
     }
