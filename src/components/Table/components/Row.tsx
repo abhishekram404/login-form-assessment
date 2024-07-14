@@ -1,10 +1,11 @@
+import AnyObject from '@customTypes/AnyObject.type'
 import { memo } from 'react'
 import { TableColumn } from '../Table'
 import { TableRowStyled } from '../Table.styled'
 import Column from './Column'
 
 export type RowProps = {
-  item: any
+  item: AnyObject
   columns: TableColumn[]
 }
 

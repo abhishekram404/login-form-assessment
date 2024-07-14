@@ -26,6 +26,7 @@ export const DropdownContent = styled.ul<{
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.2s ease-in-out;
+  z-index: 1;
   top: ${({ $top }) => $top};
   left: ${({ $left }) => $left};
   right: ${({ $right }) => $right};

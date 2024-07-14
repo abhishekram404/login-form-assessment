@@ -1,3 +1,4 @@
+import AnyObject from '@customTypes/AnyObject.type'
 import Row from './components/Row'
 import {
   TableBodyStyled,
@@ -7,7 +8,7 @@ import {
   TableStyled,
 } from './Table.styled'
 
-export type TableItem = any
+export type TableItem = AnyObject
 
 export type TableColumn = {
   name: string
