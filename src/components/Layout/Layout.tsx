@@ -6,13 +6,13 @@ import { GridSection, LayoutContainer } from './Layout.styled'
 export default function Layout() {
   return (
     <LayoutContainer>
-      <GridSection $area="header">
+      <GridSection $area="header" className="header">
         <Navbar />
       </GridSection>
-      <GridSection $area="sidebar">
+      <GridSection $area="sidebar" className="sidebar">
         <Sidebar />
       </GridSection>
-      <GridSection $area="main">
+      <GridSection $area="main" className="main">
         <Outlet />
       </GridSection>
     </LayoutContainer>
