@@ -1,8 +1,10 @@
 import { validateCreds } from '@pages/Login/Login.utils'
 import loginApi from '@services/login.api'
 import { useMutation } from '@tanstack/react-query'
+import { AxiosError } from 'axios'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import useAuth from './useAuth'
+import useToast from './useToast'
 
 export type Creds = {
   email: string
@@ -10,6 +12,7 @@ export type Creds = {
 }
 
 export default function useLogin() {
+  const toast = useToast()
   const { loginSuccess } = useAuth()
   const [creds, setCreds] = useState<Creds>({
     email: '',
@@ -26,6 +29,14 @@ export default function useLogin() {
     onSuccess({ data }) {
       const dataObj = data?.[0]
       loginSuccess?.(dataObj?.jwt_token, dataObj?.full_name)
+      toast.success('Login successful')
+    },
+    onError(error) {
+      let message = "Couldn't login"
+      if (error instanceof AxiosError) {
+        message = error?.response?.data?.message
+      }
+      toast.error(message)
     },
   })
 
