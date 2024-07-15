@@ -1,10 +1,14 @@
 import { TransactionsResponseType } from '@pages/Transactions/Transactions.types'
 import fetchTransactions from '@services/fetchTransactions.api'
 import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
+import { AxiosError } from 'axios'
+import { useEffect, useState } from 'react'
+import useToast from './useToast'
+
+const TRANSACTIONS_PER_PAGE = 20
 
 export default function useTransactions() {
-  const TRANSACTIONS_PER_PAGE = 20
+  const toast = useToast()
   const [page, setPage] = useState(1)
 
   const response = useQuery<unknown, unknown, TransactionsResponseType>({
@@ -13,6 +17,15 @@ export default function useTransactions() {
   })
 
   const transactions = response.data?.data || []
+
+  useEffect(() => {
+    if (!response.isError) return
+    let message = 'Unable to fetch transactions'
+    if (response.error instanceof AxiosError) {
+      message = response.error.response?.data.message || message
+    }
+    toast.error(message)
+  }, [response.isError, response.error])
 
   return {
     ...response,
