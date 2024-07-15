@@ -11,7 +11,7 @@ import {
 import { getNavbarUserDropdownItems } from './Navbar.utils'
 
 export default function Navbar() {
-  const { logout } = useAuth()
+  const { fullName, logout } = useAuth()
 
   const options = getNavbarUserDropdownItems({
     onLogoutClick: logout,
@@ -24,7 +24,7 @@ export default function Navbar() {
         <Dropdown items={options} position={{ top: '110%', right: '0px' }}>
           <NavbarUserProfile>
             <Avatar src="/images/avatar.png" />
-            <NavbarUserName>John Doe</NavbarUserName>
+            <NavbarUserName>{fullName}</NavbarUserName>
           </NavbarUserProfile>
         </Dropdown>
       </NavbarActions>
