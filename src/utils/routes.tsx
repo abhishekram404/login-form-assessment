@@ -18,10 +18,15 @@ export const routes: RouteObject[] = [
             path: '/',
             element: <Layout />,
             children: [
-              { path: '/', element: <Dashboard /> },
+              {
+                path: '/',
+                element: <Dashboard />,
+                loader: async () => ({ pageName: 'Dashboard' }),
+              },
               {
                 path: '/transactions',
                 element: <Transactions />,
+                loader: async () => ({ pageName: 'Transactions' }),
               },
             ],
           },
