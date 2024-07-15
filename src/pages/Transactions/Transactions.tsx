@@ -1,23 +1,13 @@
 import LoadingScreen from '@components/LoadingScreen/LoadingScreen'
 import Table from '@components/Table/Table'
-import fetchTransactions from '@services/fetchTransactions.api'
-import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
+import useTransactions from '@hooks/useTransactions'
 import { TransactionsStyled } from './Transactions.styled'
 import { transactionColumns } from './Transactions.utils'
 
-const TRANSACTIONS_PER_PAGE = 20
-
 export default function Transactions() {
-  const [page, setPage] = useState(1)
-  const transactionsQuery = useQuery({
-    queryKey: ['transactions', page],
-    queryFn: () => fetchTransactions(page, TRANSACTIONS_PER_PAGE),
-  })
+  const { transactions, isLoading, page, setPage } = useTransactions()
 
-  const tableData = transactionsQuery.data?.data?.data || []
-
-  if (transactionsQuery.isLoading) {
+  if (isLoading) {
     return <LoadingScreen />
   }
 
@@ -25,7 +15,7 @@ export default function Transactions() {
     <TransactionsStyled>
       <Table
         columns={transactionColumns}
-        items={tableData}
+        items={transactions}
         pagination
         page={page}
         setPage={setPage}
