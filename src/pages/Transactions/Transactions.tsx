@@ -13,7 +13,6 @@ export default function Transactions() {
   const transactionsQuery = useQuery({
     queryKey: ['transactions', page],
     queryFn: () => fetchTransactions(page, TRANSACTIONS_PER_PAGE),
-    staleTime: Infinity,
   })
 
   const tableData = transactionsQuery.data?.data?.data || []
