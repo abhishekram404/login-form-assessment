@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
   const loginSuccess = (token?: string, fullName?: string) => {
     if (!token) return
-    setBearerTokenInHeaders()
+    setBearerTokenInHeaders(token)
     if (fullName) setFullName(fullName)
     setIsAuthenticated(true)
     localStorage.setItem('token', token)
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     navigate('/')
   }
   const logout = () => {
-    setBearerTokenInHeaders()
+    setBearerTokenInHeaders('')
     setIsAuthenticated(false)
     setFullName('')
     localStorage.removeItem('token')
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     const token = localStorage.getItem('token')
     const fullName = localStorage.getItem('fullName')
     if (token) {
-      setBearerTokenInHeaders()
+      setBearerTokenInHeaders(token)
       setIsAuthenticated(true)
       if (fullName) setFullName(fullName)
     }
