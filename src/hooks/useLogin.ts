@@ -23,8 +23,8 @@ export default function useLogin() {
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: loginApi,
-    onSuccess(data) {
-      loginSuccess?.(data.data.accessToken)
+    onSuccess({ data }) {
+      loginSuccess?.(data.data?.[0]?.jwt_token)
     },
   })
 
@@ -55,7 +55,12 @@ export default function useLogin() {
     }
 
     try {
-      await mutateAsync(creds)
+      const payload = {
+        login_id: creds.email,
+        login_password: creds.password,
+        ip_address: import.meta.env.VITE_LOGIN_IP,
+      }
+      await mutateAsync(payload)
     } catch (error) {
       console.error(error)
     }

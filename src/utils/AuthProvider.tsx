@@ -28,7 +28,8 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
-  const loginSuccess = (token: string) => {
+  const loginSuccess = (token?: string) => {
+    if (!token) return
     localStorage.setItem('token', token)
     setIsAuthenticated(true)
     navigate('/')
