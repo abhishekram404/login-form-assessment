@@ -1,12 +1,12 @@
 export interface TransactionType {
   id: string
-  senderFullName: string
-  receiverFullName: string
-  currentStatus: string
-  sendAmount: string
-  sendCountry: string
-  receiveAmount: string
-  receiveCountry: string
+  'Sender Full Name': string
+  'Receiver Full Name': string
+  'Current Status': string
+  'Send Amount': string
+  'Send Country': string
+  'Receive Amount': string
+  'Receive Country': string
 }
 
 export interface TransactionsResponseType {
