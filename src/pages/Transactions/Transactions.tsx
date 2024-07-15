@@ -1,17 +1,11 @@
-import Input from '@components/Input'
 import LoadingScreen from '@components/LoadingScreen/LoadingScreen'
 import Table from '@components/Table/Table'
 import useSearch from '@hooks/useSearch'
 import useTransactions from '@hooks/useTransactions'
 import useTransactionSearch from '@hooks/useTransactionSearch'
-import { Icon } from '@iconify/react/dist/iconify.js'
-import {
-  PageHeader,
-  PageTitle,
-  SearchIcon,
-  SearchRow,
-  TransactionsStyled,
-} from './Transactions.styled'
+import TransactionHeader from './components/TransactionHeader'
+import TransactionSearch from './components/TransactionSearch'
+import { TransactionsStyled } from './Transactions.styled'
 import { transactionColumns } from './Transactions.utils'
 
 export default function Transactions() {
@@ -37,27 +31,12 @@ export default function Transactions() {
 
   return (
     <TransactionsStyled>
-      <PageHeader>
-        <PageTitle>Transactions</PageTitle>
-        <p>
-          This page shows all the transactions that have been made. You can use
-          the search bar to find specific transactions.
-        </p>
-      </PageHeader>
+      <TransactionHeader />
 
-      <SearchRow>
-        <Input
-          type="search"
-          placeholder="Search transactions"
-          leftIcon={
-            <SearchIcon>
-              <Icon icon={'ri:search-line'} />
-            </SearchIcon>
-          }
-          value={searchQuery}
-          onChange={onSearchChange}
-        />
-      </SearchRow>
+      <TransactionSearch
+        searchQuery={searchQuery}
+        onSearchChange={onSearchChange}
+      />
 
       <Table
         columns={transactionColumns}
