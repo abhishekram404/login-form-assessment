@@ -24,7 +24,7 @@ export default function useLogin() {
   const { mutateAsync, isPending } = useMutation({
     mutationFn: loginApi,
     onSuccess({ data }) {
-      loginSuccess?.(data.data?.[0]?.jwt_token)
+      loginSuccess?.(data?.[0]?.jwt_token)
     },
   })
 

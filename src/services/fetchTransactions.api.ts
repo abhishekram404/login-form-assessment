@@ -1,8 +1,8 @@
+import { TransactionsResponseType } from '@pages/Transactions/Transactions.types'
 import axios from 'axios'
 
-export default function fetchTransactions(
-  page: number = 1,
-  limit: number = 10,
-) {
-  return axios.post('/report-manager/v1/admin/dashboard/search')
+export default function fetchTransactions() {
+  return axios.post<TransactionsResponseType>(
+    '/report-manager/v1/admin/dashboard/search',
+  )
 }

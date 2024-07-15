@@ -6,7 +6,7 @@ import { AuthProvider } from './AuthProvider'
 axios.defaults.baseURL = import.meta.env.VITE_BASE_API
 
 axios.interceptors.response.use(
-  response => response,
+  response => response.data,
   error => {
     if (error.response.status === 401) {
       localStorage.removeItem('token')
