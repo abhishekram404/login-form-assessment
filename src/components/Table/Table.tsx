@@ -44,7 +44,7 @@ export default function Table(props: TableProps) {
       <TableStyled>
         <TableHeadStyled>
           <TableRowStyled>
-            {columns.map(column => (
+            {columns?.map(column => (
               <TableHeadItemStyled key={column.accessor}>
                 <b>{column.name}</b>
               </TableHeadItemStyled>
@@ -53,7 +53,7 @@ export default function Table(props: TableProps) {
         </TableHeadStyled>
 
         <TableBodyStyled>
-          {items.map(item => (
+          {items?.map(item => (
             <Row key={item.id} item={item} columns={columns} />
           ))}
         </TableBodyStyled>

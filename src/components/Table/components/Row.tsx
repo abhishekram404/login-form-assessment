@@ -14,7 +14,7 @@ export default memo(function Row(props: RowProps) {
 
   return (
     <TableRowStyled>
-      {columns.map(column => (
+      {columns?.map(column => (
         <Column key={item.id + column.accessor} {...column} item={item} />
       ))}
     </TableRowStyled>
