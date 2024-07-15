@@ -4,6 +4,9 @@ import { Outlet } from 'react-router-dom'
 import { AuthProvider } from './AuthProvider'
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_API
+axios.defaults.headers.common['Authorization'] =
+  `Bearer ${localStorage.getItem('token')}`
+
 const queryClient = new QueryClient()
 
 export default function Providers() {

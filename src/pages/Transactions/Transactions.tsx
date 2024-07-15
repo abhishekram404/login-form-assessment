@@ -16,6 +16,8 @@ export default function Transactions() {
     staleTime: Infinity,
   })
 
+  const tableData = transactionsQuery.data?.data?.data || []
+
   if (transactionsQuery.isLoading) {
     return <LoadingScreen />
   }
@@ -24,7 +26,7 @@ export default function Transactions() {
     <TransactionsStyled>
       <Table
         columns={transactionColumns}
-        items={transactionsQuery.data?.data}
+        items={tableData}
         pagination
         page={page}
         setPage={setPage}
