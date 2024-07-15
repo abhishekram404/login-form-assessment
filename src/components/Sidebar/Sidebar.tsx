@@ -16,7 +16,6 @@ export default function Sidebar() {
       <SidebarNav>
         <SidebarItem to={'/'}>Dashboard</SidebarItem>
         <SidebarItem to={'/transactions'}>Transactions</SidebarItem>
-        <SidebarItem to={'/settings'}>Settings</SidebarItem>
       </SidebarNav>
     </SidebarContainer>
   )
