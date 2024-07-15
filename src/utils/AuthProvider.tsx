@@ -7,7 +7,7 @@ import {
   useState,
 } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import setBearerTokenInHeaders from './setBearerTokenInHeaders'
 export interface AuthContextType {
   isAuthenticated: boolean
   isLoading?: boolean
@@ -30,11 +30,13 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
   const loginSuccess = (token?: string) => {
     if (!token) return
+    setBearerTokenInHeaders()
     localStorage.setItem('token', token)
     setIsAuthenticated(true)
     navigate('/')
   }
   const logout = () => {
+    setBearerTokenInHeaders()
     setIsAuthenticated(false)
     localStorage.removeItem('token')
     navigate('/login')
@@ -51,6 +53,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
+      setBearerTokenInHeaders()
       setIsAuthenticated(true)
     }
     setIsLoading(false)
