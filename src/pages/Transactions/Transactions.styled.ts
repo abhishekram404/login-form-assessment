@@ -17,3 +17,13 @@ export const PageHeader = styled.div`
 export const PageTitle = styled.h1`
   font-size: 1.5rem;
 `
+
+export const SearchRow = styled.div`
+  display: flex;
+  gap: 1rem;
+`
+
+export const SearchIcon = styled.span`
+  color: #2e2e2e;
+  padding: 0.5rem;
+`
