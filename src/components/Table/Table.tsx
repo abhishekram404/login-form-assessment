@@ -1,6 +1,7 @@
 import AnyObject from '@customTypes/AnyObject.type'
 import Row from './components/Row'
 import {
+  EmptyState,
   TableBodyStyled,
   TableContainer,
   TableHeadItemStyled,
@@ -48,9 +49,13 @@ export default function Table(props: TableProps) {
         </TableHeadStyled>
 
         <TableBodyStyled>
-          {items?.map(item => (
-            <Row key={item.id} item={item} columns={columns} />
-          ))}
+          {items.length ? (
+            items?.map(item => (
+              <Row key={item.id} item={item} columns={columns} />
+            ))
+          ) : (
+            <EmptyState>No data available</EmptyState>
+          )}
         </TableBodyStyled>
       </TableStyled>
       {/* {pagination && (

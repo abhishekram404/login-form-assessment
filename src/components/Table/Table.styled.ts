@@ -102,3 +102,11 @@ export const PaginationButton = styled.button`
     background: #c0c9e1;
   }
 `
+export const EmptyState = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 24px;
+  color: #b3b3b3;
+`
