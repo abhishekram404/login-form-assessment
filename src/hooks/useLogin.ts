@@ -66,16 +66,12 @@ export default function useLogin() {
       return
     }
 
-    try {
-      const payload = {
-        login_id: creds.email,
-        login_password: creds.password,
-        ip_address: import.meta.env.VITE_LOGIN_IP,
-      }
-      await mutateAsync(payload)
-    } catch (error) {
-      console.error(error)
+    const payload = {
+      login_id: creds.email,
+      login_password: creds.password,
+      ip_address: import.meta.env.VITE_LOGIN_IP,
     }
+    await mutateAsync(payload)
   }
   return {
     creds,
