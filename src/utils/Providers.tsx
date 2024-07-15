@@ -4,8 +4,17 @@ import { Outlet } from 'react-router-dom'
 import { AuthProvider } from './AuthProvider'
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_API
-axios.defaults.headers.common['Authorization'] =
-  `Bearer ${localStorage.getItem('token')}`
+
+axios.interceptors.response.use(
+  response => response,
+  error => {
+    if (error.response.status === 401) {
+      localStorage.removeItem('token')
+      window.location.href = '/login'
+    }
+    return Promise.reject(error)
+  },
+)
 
 const queryClient = new QueryClient()
 
