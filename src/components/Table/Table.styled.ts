@@ -56,7 +56,8 @@ export const TableBodyStyled = styled.tbody`
 export const TableRowStyled = styled.tr`
   display: flex;
   padding: 16px 32px;
-  gap: 48px;
+  gap: 10px;
+  justify-content: space-between;
 
   &:nth-child(odd) {
     background-color: #f6f5fb;
