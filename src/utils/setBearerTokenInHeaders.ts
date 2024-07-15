@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export default function setBearerTokenInHeaders(token: string) {
-  axios.defaults.headers.common['Authorization'] = `bearer ${token}`
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 }
