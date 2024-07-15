@@ -3,8 +3,8 @@ import ProtectedRoute from '@components/ProtectedRoute/ProtectedRoute'
 import Dashboard from '@pages/Dashboard'
 import Login from '@pages/Login'
 import Transactions from '@pages/Transactions/Transactions'
+import Providers from '@providers/Providers'
 import { RouteObject } from 'react-router-dom'
-import Providers from './Providers'
 
 export const routes: RouteObject[] = [
   {

@@ -1,6 +1,6 @@
+import setBearerTokenInHeaders from '@utils/setBearerTokenInHeaders'
 import { createContext, PropsWithChildren, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import setBearerTokenInHeaders from './setBearerTokenInHeaders'
 export interface AuthContextType {
   isAuthenticated: boolean
   isLoading?: boolean
