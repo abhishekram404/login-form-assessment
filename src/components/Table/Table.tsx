@@ -1,5 +1,4 @@
 import AnyObject from '@customTypes/AnyObject.type'
-import Pagination from './components/Pagination'
 import Row from './components/Row'
 import {
   TableBodyStyled,
@@ -23,21 +22,17 @@ export type TableColumn = {
 export type TableProps = {
   columns: TableColumn[]
   items: TableItem[]
-  pagination?: boolean
-  page?: number
-  setPage?: (page: number) => void
+  // pagination?: boolean
+  // page?: number
+  // setPage?: (page: number) => void
 }
 
 export default function Table(props: TableProps) {
-  const { columns, items, pagination, page = 1, setPage } = props
-
-  const handleNext = () => {
-    setPage?.(page + 1)
-  }
-
-  const handlePrevious = () => {
-    setPage?.(page - 1)
-  }
+  const {
+    columns,
+    items,
+    // pagination, page = 1, setPage
+  } = props
 
   return (
     <TableContainer>
@@ -58,13 +53,13 @@ export default function Table(props: TableProps) {
           ))}
         </TableBodyStyled>
       </TableStyled>
-      {pagination && (
+      {/* {pagination && (
         <Pagination
           page={page}
           handlePrevious={handlePrevious}
           handleNext={handleNext}
         />
-      )}
+      )} */}
     </TableContainer>
   )
 }

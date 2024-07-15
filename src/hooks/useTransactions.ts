@@ -9,7 +9,7 @@ const TRANSACTIONS_PER_PAGE = 20
 
 export default function useTransactions() {
   const toast = useToast()
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(1) // pagination isn't implemented because of lack of backend support for it
 
   const response = useQuery<unknown, unknown, TransactionsResponseType>({
     queryKey: ['transactions', page],

@@ -9,7 +9,11 @@ import { TransactionsStyled } from './Transactions.styled'
 import { transactionColumns } from './Transactions.utils'
 
 export default function Transactions() {
-  const { transactions, isLoading, page, setPage } = useTransactions()
+  const {
+    transactions,
+    isLoading,
+    // page, setPage
+  } = useTransactions()
 
   const {
     searchQuery,
@@ -41,9 +45,9 @@ export default function Transactions() {
       <Table
         columns={transactionColumns}
         items={tableData}
-        pagination
-        page={page}
-        setPage={setPage}
+        // pagination
+        // page={page}
+        // setPage={setPage}
       />
     </TransactionsStyled>
   )
