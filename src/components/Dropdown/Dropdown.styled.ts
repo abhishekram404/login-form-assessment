@@ -21,7 +21,7 @@ export const DropdownContent = styled.ul<{
   display: flex;
   flex-direction: column;
   list-style-type: none;
-  min-width: 160px;
+  min-width: 200px;
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

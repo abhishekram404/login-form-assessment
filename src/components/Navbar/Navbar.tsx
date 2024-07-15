@@ -21,7 +21,7 @@ export default function Navbar() {
       <NavbarTitle>Dashboard</NavbarTitle>
 
       <NavbarActions>
-        <Dropdown items={options} position={{ top: '110%', right: '0px' }}>
+        <Dropdown items={options} position={{ top: '140%', right: '0px' }}>
           <NavbarUserProfile>
             <Avatar src="/images/avatar.png" />
             <NavbarUserName>{fullName}</NavbarUserName>
