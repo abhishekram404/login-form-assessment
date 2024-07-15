@@ -7,9 +7,9 @@ export interface ButtonProps
 }
 
 export default function Button(props: ButtonProps) {
-  const { children, fontSize, ...rest } = props
+  const { children, fontSize, unstyled, ...rest } = props
 
-  if (props.unstyled) {
+  if (unstyled) {
     return (
       <UnstyledButtonElement $fontSize={fontSize} {...rest}>
         {children}
